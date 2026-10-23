@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>وضعیت سرویس‌ها</title>
+<meta property="og:title" content="وضعیت سرویس‌ها">
+<meta property="og:description" content="پایش زنده‌ی ربات‌ها، پنل‌ها، سایت نرخ و اشتراک">
+<style>
+  :root{--bg:#0d1117;--card:#161b22;--line:#30363d;--txt:#e6edf3;--mut:#8b949e;--ok:#3fb950;--bad:#f85149;--unk:#d29922}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);font-family:Tahoma,'Segoe UI',sans-serif;padding:20px 14px 40px}
+  .wrap{max-width:860px;margin:0 auto}
+  h1{font-size:22px;margin:6px 0 2px}
+  .sub{color:var(--mut);font-size:13px;margin-bottom:18px}
+  .banner{border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:18px;font-size:16px;background:var(--card)}
+  .banner.ok{border-color:var(--ok)} .banner.bad{border-color:var(--bad)}
+  h2{font-size:15px;color:var(--mut);margin:22px 0 10px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:13px 14px}
+  .row{display:flex;align-items:center;gap:8px}
+  .dot{width:11px;height:11px;border-radius:50%;flex:none}
+  .dot.ok{background:var(--ok)} .dot.bad{background:var(--bad)} .dot.unk{background:var(--unk)}
+  .name{font-size:15px;font-weight:bold}
+  .detail{color:var(--mut);font-size:12.5px;margin-top:7px;line-height:1.9}
+  .up{color:var(--txt)}
+  footer{color:var(--mut);font-size:12px;margin-top:28px;text-align:center;line-height:2}
+  a{color:#58a6ff;text-decoration:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>📡 وضعیت سرویس‌ها</h1>
+  <div class="sub" id="checked">در حال بارگذاری…</div>
+  <div class="banner" id="banner">…</div>
+  <div id="groups"></div>
+  <footer>
+    بررسی خودکار هر ۳۰ دقیقه با GitHub Actions — این صفحه هر ۶۰ ثانیه تازه می‌شود.<br>
+    <a href="https://github.com/Ashollii/Status">مخزن پروژه در گیت‌هاب</a>
+  </footer>
+</div>
+<script>
+const fa = n => Number(n).toLocaleString('fa-IR');
+async function load(){
+  try{
+    const [s,h] = await Promise.all([
+      fetch('status.json?t='+Date.now()).then(r=>r.json()),
+      fetch('history.json?t='+Date.now()).then(r=>r.json()).catch(()=>[])
+    ]);
+    const d = new Date(s.checked_at_epoch*1000);
+    document.getElementById('checked').textContent =
+      'آخرین بررسی: ' + d.toLocaleString('fa-IR',{timeZone:'Asia/Tehran'});
+    const down = s.targets.filter(t=>t.ok===false);
+    const b = document.getElementById('banner');
+    if(down.length===0){ b.className='banner ok'; b.textContent='🟢 همه‌ی سرویس‌ها در دسترس‌اند'; }
+    else { b.className='banner bad'; b.textContent='🔴 '+fa(down.length)+' سرویس مشکل دارد: '+down.map(t=>t.name).join('، '); }
+    const uptime = {};
+    for(const t of s.targets){
+      const rows = h.filter(x=>x.states && x.states[t.id]!==null && x.states[t.id]!==undefined);
+      if(rows.length) uptime[t.id] = Math.round(1000*rows.filter(x=>x.states[t.id]===true).length/rows.length)/10;
+    }
+    const groups = {};
+    for(const t of s.targets){ (groups[t.group]=groups[t.group]||[]).push(t); }
+    let html='';
+    for(const g of Object.keys(groups)){
+      html += '<h2>'+g+'</h2><div class="grid">';
+      for(const t of groups[g]){
+        const cls = t.ok===true?'ok':(t.ok===false?'bad':'unk');
+        const st = t.ok===true?'در دسترس':(t.ok===false?'خارج از دسترس':'نامشخص');
+        html += '<div class="card"><div class="row"><span class="dot '+cls+'"></span><span class="name">'+t.name+'</span></div>'
+          + '<div class="detail">وضعیت: '+st+'<br>'+ (t.detail||'')
+          + (t.ms!=null ? '<br>زمان پاسخ: '+fa(t.ms)+' میلی‌ثانیه' : '')
+          + (uptime[t.id]!=null ? '<br>آپتایم اخیر: <span class="up">'+fa(uptime[t.id])+'٪</span>' : '')
+          + '</div></div>';
+      }
+      html += '</div>';
+    }
+    document.getElementById('groups').innerHTML = html;
+  }catch(e){
+    document.getElementById('checked').textContent = 'خطا در خواندن وضعیت — هنوز اولین بررسی انجام نشده؟';
+  }
+}
+load(); setInterval(load, 60000);
+</script>
+</body>
+</html>
