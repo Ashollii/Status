@@ -21,7 +21,8 @@ jobs:
         env:
           NERKH_BOT_TOKEN: ${{ secrets.NERKH_BOT_TOKEN }}
           SUB_BOT_TOKEN: ${{ secrets.SUB_BOT_TOKEN }}
-          TG_ALERT_TOKEN: ${{ secrets.NERKH_BOT_TOKEN }}
+          STATUS_BOT_TOKEN: ${{ secrets.STATUS_BOT_TOKEN }}
+          TG_ALERT_TOKEN: ${{ secrets.STATUS_BOT_TOKEN }}
           TG_CHAT_ID: "2049426064"
         run: python3 check.py
       - name: Commit status
