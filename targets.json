@@ -1,10 +1,70 @@
 [
-  {"id": "nerkh_site", "name": "سایت نرخ", "group": "نرخ", "type": "http", "url": "https://ashollii.github.io/Nerkh/", "expect": [200]},
-  {"id": "nerkh_data", "name": "تازگی دیتای نرخ", "group": "نرخ", "type": "freshness", "url": "https://raw.githubusercontent.com/Ashollii/Nerkh/main/market.json", "max_age_min": 120},
-  {"id": "sub_data", "name": "اشتراک SUB", "group": "اشتراک", "type": "count", "url": "https://raw.githubusercontent.com/Ashollii/SUB/main/SUB.txt", "min": 50},
-  {"id": "panel_bpb", "name": "پنل BPB", "group": "پنل‌ها", "type": "http_any", "url": "https://sz8ecmuy0321dyppra8dy4.aalimohammadiashkan.workers.dev/GxkmK-r3JtRbmG7/panel"},
-  {"id": "panel_nahan", "name": "پنل نهان", "group": "پنل‌ها", "type": "http_any", "url": "https://ashkan-sub.aalimohammadiashkan.workers.dev/sync/dash"},
-  {"id": "panel_adab", "name": "پنل ادب", "group": "پنل‌ها", "type": "http_any", "url": "https://adab-sub.aalimohammadiashkan.workers.dev/sync/dash"},
-  {"id": "bot_nerkh", "name": "ربات نرخ", "group": "ربات‌ها", "type": "telegram", "env": "NERKH_BOT_TOKEN"},
-  {"id": "bot_sub", "name": "ربات مدیریت اشتراک", "group": "ربات‌ها", "type": "telegram", "env": "SUB_BOT_TOKEN"}
+  {
+    "id": "nerkh_site",
+    "name": "سایت نرخ",
+    "group": "نرخ",
+    "type": "http",
+    "url": "https://ashollii.github.io/Nerkh/",
+    "expect": [
+      200
+    ]
+  },
+  {
+    "id": "nerkh_data",
+    "name": "تازگی دیتای نرخ",
+    "group": "نرخ",
+    "type": "freshness",
+    "url": "https://raw.githubusercontent.com/Ashollii/Nerkh/main/market.json",
+    "max_age_min": 120
+  },
+  {
+    "id": "sub_data",
+    "name": "اشتراک SUB",
+    "group": "اشتراک",
+    "type": "count",
+    "url": "https://raw.githubusercontent.com/Ashollii/SUB/main/SUB.txt",
+    "min": 50
+  },
+  {
+    "id": "panel_bpb",
+    "name": "پنل BPB",
+    "group": "پنل‌ها",
+    "type": "http_any",
+    "url": "https://sz8ecmuy0321dyppra8dy4.aalimohammadiashkan.workers.dev/GxkmK-r3JtRbmG7/panel"
+  },
+  {
+    "id": "panel_nahan",
+    "name": "پنل نهان",
+    "group": "پنل‌ها",
+    "type": "http_any",
+    "url": "https://ashkan-sub.aalimohammadiashkan.workers.dev/sync/dash"
+  },
+  {
+    "id": "panel_adab",
+    "name": "پنل ادب",
+    "group": "پنل‌ها",
+    "type": "http_any",
+    "url": "https://adab-sub.aalimohammadiashkan.workers.dev/sync/dash"
+  },
+  {
+    "id": "bot_nerkh",
+    "name": "ربات نرخ",
+    "group": "ربات‌ها",
+    "type": "telegram",
+    "env": "NERKH_BOT_TOKEN"
+  },
+  {
+    "id": "bot_sub",
+    "name": "ربات مدیریت اشتراک",
+    "group": "ربات‌ها",
+    "type": "telegram",
+    "env": "SUB_BOT_TOKEN"
+  },
+  {
+    "id": "bot_status",
+    "name": "ربات وضعیت",
+    "group": "ربات‌ها",
+    "type": "telegram",
+    "env": "STATUS_BOT_TOKEN"
+  }
 ]
