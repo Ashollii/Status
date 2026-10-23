@@ -1,0 +1,40 @@
+name: Service Status Check
+
+on:
+  schedule:
+    - cron: "*/30 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: status-check
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run checks
+        env:
+          NERKH_BOT_TOKEN: ${{ secrets.NERKH_BOT_TOKEN }}
+          SUB_BOT_TOKEN: ${{ secrets.SUB_BOT_TOKEN }}
+          TG_ALERT_TOKEN: ${{ secrets.NERKH_BOT_TOKEN }}
+          TG_CHAT_ID: "2049426064"
+        run: python3 check.py
+      - name: Commit status
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add status.json history.json
+          if git diff --cached --quiet; then
+            echo "no change"
+            exit 0
+          fi
+          git commit -m "status update"
+          for i in 1 2 3; do
+            git pull --rebase origin main && git push && break
+            sleep 5
+          done
