@@ -1,6 +1,6 @@
 {
- "checked_at": "2026-10-27 01:31:58",
- "checked_at_epoch": 1793052118,
+ "checked_at": "2026-10-27 05:02:35",
+ "checked_at_epoch": 1793064755,
  "targets": [
   {
    "id": "nerkh_site",
@@ -8,23 +8,23 @@
    "group": "نرخ",
    "ok": true,
    "detail": "کد 200",
-   "ms": 203
+   "ms": 230
   },
   {
    "id": "nerkh_data",
    "name": "تازگی دیتای نرخ",
    "group": "نرخ",
    "ok": true,
-   "detail": "آخرین آپدیت 58 دقیقه پیش",
-   "ms": 136
+   "detail": "آخرین آپدیت 29 دقیقه پیش",
+   "ms": 104
   },
   {
    "id": "sub_data",
    "name": "اشتراک SUB",
    "group": "اشتراک",
    "ok": true,
-   "detail": "1730 کانفیگ",
-   "ms": 452
+   "detail": "1639 کانفیگ",
+   "ms": 161
   },
   {
    "id": "panel_bpb",
@@ -32,7 +32,7 @@
    "group": "پنل‌ها",
    "ok": true,
    "detail": "کد 200",
-   "ms": 727
+   "ms": 635
   },
   {
    "id": "panel_nahan",
@@ -40,7 +40,7 @@
    "group": "پنل‌ها",
    "ok": true,
    "detail": "کد 200",
-   "ms": 981
+   "ms": 1195
   },
   {
    "id": "panel_adab",
@@ -48,7 +48,7 @@
    "group": "پنل‌ها",
    "ok": true,
    "detail": "کد 200",
-   "ms": 1354
+   "ms": 1157
   },
   {
    "id": "bot_nerkh",
@@ -56,7 +56,7 @@
    "group": "ربات‌ها",
    "ok": true,
    "detail": "پاسخ‌گو",
-   "ms": 473
+   "ms": 385
   },
   {
    "id": "bot_sub",
@@ -64,7 +64,7 @@
    "group": "ربات‌ها",
    "ok": true,
    "detail": "پاسخ‌گو",
-   "ms": 398
+   "ms": 358
   },
   {
    "id": "bot_status",
@@ -72,7 +72,7 @@
    "group": "ربات‌ها",
    "ok": true,
    "detail": "پاسخ‌گو",
-   "ms": 397
+   "ms": 361
   }
  ]
 }
