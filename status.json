@@ -1,6 +1,6 @@
 {
- "checked_at": "2026-11-22 06:14:03",
- "checked_at_epoch": 1795315443,
+ "checked_at": "2026-11-22 13:58:01",
+ "checked_at_epoch": 1795343281,
  "targets": [
   {
    "id": "nerkh_site",
@@ -8,7 +8,7 @@
    "group": "نرخ",
    "ok": true,
    "detail": "کد 200",
-   "ms": 116
+   "ms": 111
   },
   {
    "id": "nerkh_data",
@@ -16,15 +16,15 @@
    "group": "نرخ",
    "ok": true,
    "detail": "آخرین آپدیت 10 دقیقه پیش",
-   "ms": 63
+   "ms": 85
   },
   {
    "id": "sub_data",
    "name": "اشتراک SUB",
    "group": "اشتراک",
    "ok": true,
-   "detail": "279 کانفیگ",
-   "ms": 66
+   "detail": "283 کانفیگ",
+   "ms": 10
   },
   {
    "id": "panel_bpb",
@@ -32,7 +32,7 @@
    "group": "پنل‌ها",
    "ok": true,
    "detail": "کد 403",
-   "ms": 57
+   "ms": 41
   },
   {
    "id": "panel_nahan",
@@ -40,7 +40,7 @@
    "group": "پنل‌ها",
    "ok": true,
    "detail": "کد 403",
-   "ms": 123
+   "ms": 45
   },
   {
    "id": "panel_adab",
@@ -48,7 +48,7 @@
    "group": "پنل‌ها",
    "ok": true,
    "detail": "کد 403",
-   "ms": 103
+   "ms": 110
   },
   {
    "id": "bot_nerkh",
@@ -56,7 +56,7 @@
    "group": "ربات‌ها",
    "ok": true,
    "detail": "پاسخ‌گو",
-   "ms": 331
+   "ms": 338
   },
   {
    "id": "bot_sub",
@@ -64,7 +64,7 @@
    "group": "ربات‌ها",
    "ok": true,
    "detail": "پاسخ‌گو",
-   "ms": 301
+   "ms": 303
   },
   {
    "id": "bot_status",
@@ -72,7 +72,7 @@
    "group": "ربات‌ها",
    "ok": true,
    "detail": "پاسخ‌گو",
-   "ms": 297
+   "ms": 291
   }
  ]
 }
